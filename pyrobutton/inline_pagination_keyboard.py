@@ -1,4 +1,10 @@
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+from pyrogram import enums
+from pyrogram.types import (
+    InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo, LoginUrl,
+    SwitchInlineQueryChosenChat, CopyTextButton, CallbackGame
+)
+from typing import Optional, Union
 
 
 class InlinePaginationKeyboard(InlineKeyboardMarkup):
@@ -101,12 +107,31 @@ class InlinePaginationKeyboard(InlineKeyboardMarkup):
         self.inline_keyboard.append(self.build_pagination)
 
 
+
+
 class InlineButton(InlineKeyboardButton):
-    def __init__(self, text=None, callback_data=None, url=None,
-                 web_app=None, login_url=None, user_id=None,
-                 switch_inline_query=None, switch_inline_query_current_chat=None,
-                 switch_inline_query_chosen_chat=None, copy_text=None,
-                 callback_game=None, pay=None):
+    def __init__(
+        self,
+        text: str = None,
+        callback_data: Optional[Union[str, bytes]] = None,
+        url: Optional[str] = None,
+        web_app: Optional[WebAppInfo] = None,
+        login_url: Optional[LoginUrl] = None,
+        user_id: Optional[int] = None,
+        switch_inline_query: Optional[str] = None,
+        switch_inline_query_current_chat: Optional[str] = None,
+        switch_inline_query_chosen_chat: Optional[SwitchInlineQueryChosenChat] = None,
+        copy_text: Optional[CopyTextButton|str] = None,
+        callback_game: Optional[CallbackGame] = None,
+        pay: Optional[bool] = None,
+        callback_data_with_password: Optional[bytes] = None,
+        icon_custom_emoji_id: Optional[int] = None,
+        style: enums.ButtonStyle = enums.ButtonStyle.DEFAULT,
+    ):
+        
+        if isinstance(copy_text, str):
+            copy_text = CopyTextButton(copy_text)
+            
         super().__init__(
             text=text,
             callback_data=callback_data,
@@ -119,5 +144,8 @@ class InlineButton(InlineKeyboardButton):
             switch_inline_query_chosen_chat=switch_inline_query_chosen_chat,
             copy_text=copy_text,
             callback_game=callback_game,
-            pay=pay
+            pay=pay,
+            callback_data_with_password=callback_data_with_password,
+            icon_custom_emoji_id=icon_custom_emoji_id,
+            style=style,
         )
