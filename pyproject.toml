@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "pyrobutton"
+version = "0.1.0"
+description = "Keyboard button helpers for Pyrogram"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Kikhsn"}
+]
+keywords = ["pyrogram", "telegram", "keyboard", "button", "inline"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "pyrotgfork",
+    "pytgcrypto",
+]
+
+[project.urls]
+Homepage = "https://github.com/Kikhsn/pyrobutton"
+Repository = "https://github.com/Kikhsn/pyrobutton"
+Issues = "https://github.com/Kikhsn/pyrobutton/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyrobutton*"]
